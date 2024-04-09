@@ -2,12 +2,18 @@
 
 pipeline {
     agent any
+    parameters {
+        string(name: 'DOCKER_USERNAME', defaultValue: '', description: 'Docker Hub Username')
+        string(name: 'DOCKER_PASSWORD', defaultValue: '', description: 'Docker Hub Password')
+    }
     stages {
-        stage('Hello') {
+        stage('Login to Docker Hub') {
             steps {
-                myStep()
+                script {
+                    mystep.loginToDockerHub(params.DOCKER_USERNAME, params.DOCKER_PASSWORD)
+                }
             }
         }
+        // Add more stages as needed
     }
 }
-
