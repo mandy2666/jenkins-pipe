@@ -9,8 +9,11 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    // Log in to Docker Hub
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                    script {
+                        docker.withRegistry('https://index.docker.io/v1/', 'DOCKER_USERNAME', 'DOCKER_PASSWORD') {
+                            // Your Docker-related steps here
+                        }
+                    }
                 }
             }
         }
