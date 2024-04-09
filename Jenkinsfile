@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                myStep 'World'
+                myStep()
             }
         }
     }
