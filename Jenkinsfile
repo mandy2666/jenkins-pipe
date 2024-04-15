@@ -8,7 +8,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    loginToDockerHub('your-docker-username', 'your-docker-password')
+                   DockerUtils.groovy()   
                 }
             }
         }
