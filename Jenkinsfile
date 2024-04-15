@@ -7,9 +7,8 @@ pipeline {
     stages {
         stage('Docker Login') {
             steps {
-                	 DockerUtils()
-                    }
-                }
+                // Call the loginToDockerHub method from the imported library
+                DockerUtils.loginToDockerHub()
             }
         }
     }
